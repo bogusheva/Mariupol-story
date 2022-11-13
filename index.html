@@ -64,11 +64,6 @@
         letter-spacing: 0.03em;
         font-size: 1.15rem;
         padding: 0.3rem 0 1rem;
-        text-align: center;
-      }
-      figure {
-        width: 100%;
-        overflow: hidden;
       }
       figcaption {
         padding-top: 0.7rem;
@@ -152,6 +147,10 @@
       .image-12 {
         grid-area: item-12;
       }
+      .img-block-holder {
+        overflow: hidden;
+        position: relative;
+      }
       .hidden-img {
         z-index: 1;
         position: absolute;
@@ -160,9 +159,8 @@
         transform: translateY(0%);
         transition: transform ease-in 0.3s;
       }
-      .img-block-holder {
-        overflow: hidden;
-        position: relative;
+      .img-block-holder:hover .hidden-img {
+        transform: translateY(100%);
       }
       .img-block-holder.inactive .hidden-img,
       .changing-paragraph.invisible,
@@ -170,9 +168,6 @@
       .new-button-info.hidden,
       .new-paragraph.hidden {
         display: none;
-      }
-      .img-block-holder:hover .hidden-img {
-        transform: translateY(100%);
       }
       .new-paragraph.showing,
       .new-button-info.showing {
@@ -201,7 +196,6 @@
         bottom: 0;
         right: 0;
         border-radius: 50px 50px 0 0;
-        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
         transition: all ease-in 0.2s;
         cursor: pointer;
       }
@@ -287,14 +281,14 @@
                 kinds of weapons, including air bombs.
               </p>
               <p class="changing-paragraph visible">
-                These photos 👇 - are what Mariupol looks like today. But if you
+                These photos are what my hometown looks like today. But if you
                 touch any photo, you will see Mariupol from my memories and
                 dreams.
               </p>
               <p class="new-paragraph hidden">
-                These photos 👇 - this is what Mariupol looked like before the
-                war started. This is Mariupol from my memories and dreams. And I
-                believe that Ukrainian Mariupol will be reborn after the war.
+                These photos - what Mariupol looked like before the war started.
+                This is hometown from my memories and dreams. And I believe that
+                Ukrainian Mariupol will be reborn after the war.
               </p>
             </figcaption>
           </figure>
@@ -314,7 +308,7 @@
                   alt="Mariupol before"
                 />
               </div>
-              <figcaption><small> The Downtown</small></figcaption>
+              <figcaption><small> The City Centre</small></figcaption>
             </figure>
             <figure class="image-2">
               <div class="img-block-holder">
@@ -476,11 +470,11 @@
         </section>
         <section class="video-holder">
           <p class="know-more">
-            👉 Please, read more about
+            Please, read more about
             <a href="https://en.wikipedia.org/wiki/Mariupol" target="_blank">
               Mariupol</a
             >
-            or watch this video 👇
+            or watch this video
           </p>
           <div class="iframe-holder">
             <iframe
@@ -495,11 +489,11 @@
       </main>
       <footer>
         <span class="button-info visible"
-          >Click, 👇 if you stand with Ukraine and you will see Mariupol from my
+          >Click, if you stand with Ukraine and you will see Mariupol from my
           dreams.</span
         >
         <span class="new-button-info hidden"
-          >Click again 👇 and you will return to post-war city</span
+          >Click again and you will return to post-war city</span
         >
         <button class="button-heart">Mariupol is Ukraine!</button>
         <small
