@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@800&family=Short+Stack&display=swap"
+      rel="stylesheet"
+    />
+    <title>MyHometown</title>
+    <style>
+      html {
+        font-size: 14px;
+      }
+      body {
+        padding: 0;
+        margin: 0 auto;
+        font-family: "Short Stack", cursive;
+        text-align: center;
+        background: aliceblue;
+        color: #050134;
+      }
+      section {
+        padding: 0.5rem 0 0.7rem;
+      }
+      header {
+        padding: 0.5rem 0 0.7rem;
+        background: #385170;
+        color: aliceblue;
+      }
+      footer {
+        background: #385170;
+        color: aliceblue;
+        padding: 0.5rem 0 0.7rem;
+        position: relative;
+      }
+      figure,
+      p,
+      h1,
+      h3,
+      div {
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        margin-block-end: 0;
+        margin-block-start: 0;
+      }
+      img {
+        max-width: 100%;
+      }
+      h1 {
+        font-family: "Merienda", cursive;
+        letter-spacing: 0.03em;
+        padding: 0.7rem 1rem;
+        animation: color-change ease-in-out 3s infinite alternate;
+      }
+      h3 {
+        letter-spacing: 0.03em;
+        font-size: 1.15rem;
+        padding: 0.3rem 0 1rem;
+        text-align: center;
+      }
+      figure {
+        width: 100%;
+        overflow: hidden;
+      }
+      figcaption {
+        padding-top: 0.7rem;
+      }
+      p {
+        padding: 0.7rem 0;
+        text-align: justify;
+      }
+      small,
+      span {
+        display: block;
+        text-align: center;
+        font-family: "Merienda", cursive;
+        font-size: 0.7rem;
+      }
+      a:visited {
+        color: #050134;
+      }
+      iframe {
+        max-width: 100%;
+        width: 560px;
+        height: 315px;
+        padding: 20px 0;
+      }
+      .main-container {
+        padding: 0 1rem;
+      }
+      .gallery {
+        display: grid;
+        gap: 0.7rem;
+        grid-template-areas:
+          "item-1 item-2"
+          "item-3 item-4"
+          "item-5 item-6"
+          "item-7 item-8"
+          "item-9 item-10"
+          "item-11 item-12";
+      }
+      .main-img {
+        filter: brightness(86%) contrast(111%) grayscale(111%) invert(1%)
+          saturate(167%) sepia(2%);
+      }
+      .main-img.invisible,
+      .main-img:hover {
+        filter: none;
+      }
+      .image-1 {
+        grid-area: item-1;
+      }
+      .image-2 {
+        grid-area: item-2;
+      }
+      .image-3 {
+        grid-area: item-3;
+      }
+      .image-4 {
+        grid-area: item-4;
+      }
+      .image-5 {
+        grid-area: item-5;
+      }
+      .image-6 {
+        grid-area: item-6;
+      }
+      .image-7 {
+        grid-area: item-7;
+      }
+      .image-8 {
+        grid-area: item-8;
+      }
+      .image-9 {
+        grid-area: item-9;
+      }
+      .image-10 {
+        grid-area: item-10;
+      }
+      .image-11 {
+        grid-area: item-11;
+      }
+      .image-12 {
+        grid-area: item-12;
+      }
+      .hidden-img {
+        z-index: 1;
+        position: absolute;
+        filter: brightness(86%) contrast(111%) grayscale(111%) invert(1%)
+          saturate(167%) sepia(2%);
+        transform: translateY(0%);
+        transition: transform ease-in 0.3s;
+      }
+      .img-block-holder {
+        overflow: hidden;
+        position: relative;
+      }
+      .img-block-holder.inactive .hidden-img,
+      .changing-paragraph.invisible,
+      .button-info.invisible,
+      .new-button-info.hidden,
+      .new-paragraph.hidden {
+        display: none;
+      }
+      .img-block-holder:hover .hidden-img {
+        transform: translateY(100%);
+      }
+      .new-paragraph.showing,
+      .new-button-info.showing {
+        display: block;
+      }
+      .button-heart {
+        background: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/052/962/original/heart-img.png?1668197799)
+          no-repeat center;
+        background-size: contain;
+        border: none;
+        max-width: 8.6rem;
+        font-size: 1.3rem;
+        padding: 1.6rem 0.9rem;
+        margin: 1rem 0;
+        animation: heart-beating 1s infinite alternate;
+        cursor: pointer;
+      }
+      .go-up-button {
+        font-size: 0.6rem;
+        padding: 0.5rem 0.4rem;
+        text-align: center;
+        position: absolute;
+        background-color: aliceblue;
+        border-color: aliceblue;
+        color: #050134;
+        font-weight: 800;
+        bottom: 0;
+        right: 0;
+        border-radius: 50px 50px 0 0;
+        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        transition: all ease-in 0.2s;
+      }
+      .go-up-button:hover {
+        border-color: #050134;
+      }
+      @keyframes heart-beating {
+        from {
+          scale: 1;
+          text-shadow: none;
+        }
+        to {
+          scale: 1.2;
+          text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+      }
+      @keyframes color-change {
+        0% {
+          opacity: 0.2;
+          text-shadow: none;
+        }
+        100% {
+          opacity: 1;
+          text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+      }
+      @media screen and (min-width: 768px) {
+        html {
+          font-size: 20px;
+        }
+        .gallery {
+          gap: 1rem;
+          grid-template-areas:
+            "item-1 item-2 item-3"
+            "item-4 item-5 item-6"
+            "item-7 item-8 item-9"
+            "item-10 item-11 item-12";
+        }
+        iframe {
+          width: 840px;
+          height: 470px;
+        }
+      }
+      @media screen and (min-width: 1025px) {
+        html {
+          font-size: 30px;
+        }
+        .gallery {
+          gap: 1.3rem;
+          grid-template-areas:
+            "item-1 item-2 item-3 item-4"
+            "item-5 item-6 item-7 item-8"
+            "item-9 item-10 item-11 item-12";
+        }
+        iframe {
+          width: 1120px;
+          height: 630px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Mariupol is always on my mind</h1>
+      </header>
+      <main class="main-container">
+        <section class="intro">
+          <h3>
+            💙💛Welcome everyone💙💛,<br />
+            who supports Ukraine in the war against Russia
+          </h3>
+          <figure class="main-img-holder">
+            <img
+              class="main-img visible"
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/078/original/e.sosnovskii_mariupol.jpg?1668261593"
+              alt="Mariupol main photo"
+            />
+            <figcaption>
+              <p>
+                I was born and lived all my life in Mariupol, Ukraine. When the
+                war started, russian troops destroyed my beloved city using all
+                kinds of weapons, including air bombs.
+              </p>
+              <p class="changing-paragraph visible">
+                These photos 👇 - are what Mariupol looks like today. But if you
+                touch any photo, you will see Mariupol from my memories and
+                dreams.
+              </p>
+              <p class="new-paragraph hidden">
+                These photos 👇 - this is what Mariupol looked like before the
+                war started. This is Mariupol from my memories and dreams. And I
+                believe that Ukrainian Mariupol will be reborn after the war.
+              </p>
+            </figcaption>
+          </figure>
+        </section>
+        <section class="photo-gallery">
+          <h3>Mariupol - photo gallery</h3>
+          <div class="gallery">
+            <figure class="image-1">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/060/original/part_1_2.jpg?1668252060"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/059/original/part_1_1.jpg?1668252050"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Downtown</small></figcaption>
+            </figure>
+            <figure class="image-2">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/062/original/part_2_2.jpg?1668252072"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/061/original/part_2_1.jpg?1668252066"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Theatre Square</small></figcaption>
+            </figure>
+            <figure class="image-3">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/064/original/part_3_2.jpg?1668252084"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/063/original/part_3_1.jpg?1668252078"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Freedom Square</small></figcaption>
+            </figure>
+            <figure class="image-4">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/066/original/part_4_2.jpg?1668252095"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/065/original/part_4_1.jpg?1668252090"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Drama Theatre</small></figcaption>
+            </figure>
+            <figure class="image-5">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/123/original/part_5_2.jpg?1668277962"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/121/original/part_5_1.jpg?1668277956"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Swimming Pool</small></figcaption>
+            </figure>
+            <figure class="image-6">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/125/original/part_6_2.jpg?1668277974"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/124/original/part_6_1.jpg?1668277968"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The House with Clock</small></figcaption>
+            </figure>
+            <figure class="image-7">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/128/original/part_7_2.jpg?1668277986"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/126/original/part_7_1.jpg?1668277981"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Railway Station</small></figcaption>
+            </figure>
+            <figure class="image-8">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/129/original/part_8_1.jpg?1668277992"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/130/original/part_8_2.jpg?1668277999"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption>
+                <small> Cathedral of St. Michael the Archangel</small>
+              </figcaption>
+            </figure>
+            <figure class="image-9">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/133/original/part_9_2.jpg?1668278012"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/131/original/part_9_1.jpg?1668278004"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Peace st.</small></figcaption>
+            </figure>
+            <figure class="image-10">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/135/original/part_10_2.jpg?1668278026"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/134/original/part_10_1.jpg?1668278021"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The University</small></figcaption>
+            </figure>
+            <figure class="image-11">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/137/original/part_11_2.jpg?1668278039"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/136/original/part_11_1.jpg?1668278032"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Shopping Mall</small></figcaption>
+            </figure>
+            <figure class="image-12">
+              <div class="img-block-holder">
+                <img
+                  class="hidden-img"
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/139/original/part_12_2.jpg?1668278052"
+                  alt="Mariupol after"
+                />
+                <img
+                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/053/138/original/part_12_1.jpg?1668278045"
+                  alt="Mariupol before"
+                />
+              </div>
+              <figcaption><small> The Main Street</small></figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="video-holder">
+          <p class="know-more">
+            👉 Please, read more about
+            <a href="https://en.wikipedia.org/wiki/Mariupol" target="_blank">
+              Mariupol</a
+            >
+            or watch this video 👇
+          </p>
+          <div class="iframe-holder">
+            <iframe
+              src="https://www.youtube.com/embed/QLg9PDc3OiA"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span class="button-info visible"
+          >Click, 👇 if you stand with Ukraine and you will see pre-war
+          Mariupol.</span
+        >
+        <span class="new-button-info hidden"
+          >One more click 👇 and you will return to post-war city</span
+        >
+        <button class="button-heart">Mariupol is Ukraine!</button>
+        <small
+          >Created by
+          <a href="https://www.linkedin.com/in/olena-bogusheva/" target="_blank"
+            >Olena Bogusheva</a
+          ></small
+        >
+        <button class="go-up-button">Go up</button>
+      </footer>
+    </div>
+    <script>
+      const applyButton = document.querySelector(".button-heart");
+      const goUpButton = document.querySelector(".go-up-button");
+      const imgHolder = document.querySelectorAll(".img-block-holder");
+      const visibleBlocks = document.querySelectorAll(".visible");
+      const hiddenBlocks = document.querySelectorAll(".hidden");
+      const scroll = () =>
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+
+      goUpButton.addEventListener("click", scroll);
+
+      applyButton.addEventListener("click", () => {
+        visibleBlocks.forEach((item) => {
+          item.classList.toggle("invisible");
+        });
+        hiddenBlocks.forEach((item) => {
+          item.classList.toggle("showing");
+        });
+        imgHolder.forEach((item) => {
+          item.classList.toggle("inactive");
+        });
+      });
+    </script>
+  </body>
+</html>
